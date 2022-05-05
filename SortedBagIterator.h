@@ -11,7 +11,8 @@ private:
 	const SortedBag& bag;
 	SortedBagIterator(const SortedBag& b);
 
-	//TODO - Representation
+	//keep the current node in linked list
+	SortedBag::Node* current;
 
 public:
 	TComp getCurrent();

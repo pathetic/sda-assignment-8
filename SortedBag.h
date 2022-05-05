@@ -13,8 +13,20 @@ class SortedBag {
 	friend class SortedBagIterator;
 
 private:
-	//TODO - Representation
+	//relation of put the element in sorted order
+	Relation relation;
 
+	//Node that store data of bag
+	struct Node {
+		TComp data;
+		Node* next;
+	};
+
+	//head of linked list
+	Node* head;
+
+	//number of elements in list
+	int numElements;
 public:
 	//constructor
 	SortedBag(Relation r);

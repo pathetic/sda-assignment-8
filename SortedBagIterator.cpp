@@ -4,25 +4,52 @@
 
 using namespace std;
 
+/*
+Time complexity: O(1)
+*/
 SortedBagIterator::SortedBagIterator(const SortedBag& b) : bag(b) {
-	//TODO - Implementation
+
+	current = b.head;
 }
 
+/*
+Time complexity: O(1)
+*/
 TComp SortedBagIterator::getCurrent() {
-	//TODO - Implementation
-	return NULL_TCOMP;
+
+	if (current != nullptr)
+	{
+		return current->data;
+	}
+	throw exception();
 }
 
+/*
+Time complexity: O(1)
+*/
 bool SortedBagIterator::valid() {
-	//TODO - Implementation
-	return false;
+	return current != nullptr;
 }
 
+/*
+Time complexity: O(1)
+*/
 void SortedBagIterator::next() {
-	//TODO - Implementation
+
+	if (current != nullptr)
+	{
+		current = current->next;
+	}
+	else {
+		throw exception();
+	}
 }
 
+/*
+Time complexity: O(1)
+*/
 void SortedBagIterator::first() {
-	//TODO - Implementation
+
+	current = bag.head;
 }
 
