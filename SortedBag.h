@@ -5,7 +5,7 @@
 typedef int TComp;
 typedef TComp TElem;
 typedef bool(*Relation)(TComp, TComp);
-#define NULL_TCOMP -11111;
+#define NULL_TCOMP -11111
 
 class SortedBagIterator;
 
@@ -16,17 +16,17 @@ private:
 	//relation of put the element in sorted order
 	Relation relation;
 
-	//Node that store data of bag
-	struct Node {
-		TComp data;
-		Node* next;
-	};
+	static const int initialArraySize = 100;
 
-	//head of linked list
-	Node* head;
+	//dynamic array
+	TComp* data;
 
 	//number of elements in list
 	int numElements;
+
+	//size of array
+	int arraySize;
+
 public:
 	//constructor
 	SortedBag(Relation r);

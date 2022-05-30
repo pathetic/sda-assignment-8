@@ -11,8 +11,8 @@ private:
 	const SortedBag& bag;
 	SortedBagIterator(const SortedBag& b);
 
-	//keep the current node in linked list
-	SortedBag::Node* current;
+	//keep the current position in array
+	int position;
 
 public:
 	TComp getCurrent();

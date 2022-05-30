@@ -9,7 +9,17 @@ Time complexity: O(1)
 */
 SortedBagIterator::SortedBagIterator(const SortedBag& b) : bag(b) {
 
-	current = b.head;
+	position = -1;
+
+	//find first
+	for (int i = 0; i < bag.arraySize; i++)
+	{
+		if (b.data[i] != NULL_TCOMP) {
+
+			position = i;
+			break;
+		}
+	}
 }
 
 /*
@@ -17,9 +27,9 @@ Time complexity: O(1)
 */
 TComp SortedBagIterator::getCurrent() {
 
-	if (current != nullptr)
+	if (position != -1)
 	{
-		return current->data;
+		return bag.data[position];
 	}
 	throw exception();
 }
@@ -28,7 +38,7 @@ TComp SortedBagIterator::getCurrent() {
 Time complexity: O(1)
 */
 bool SortedBagIterator::valid() {
-	return current != nullptr;
+	return position != -1;
 }
 
 /*
@@ -36,13 +46,22 @@ Time complexity: O(1)
 */
 void SortedBagIterator::next() {
 
-	if (current != nullptr)
+	if (position == -1)
 	{
-		current = current->next;
-	}
-	else {
 		throw exception();
 	}
+
+	//next position
+	for (int i = position + 1; i < bag.arraySize; i++)
+	{
+		if (bag.data[i] != NULL_TCOMP) {
+
+			position = i;
+			return;
+		}
+	}
+
+	position = -1;	
 }
 
 /*
@@ -50,6 +69,16 @@ Time complexity: O(1)
 */
 void SortedBagIterator::first() {
 
-	current = bag.head;
+	position = -1;
+
+	//find first
+	for (int i = 0; i < bag.arraySize; i++)
+	{
+		if (bag.data[i] != NULL_TCOMP) {
+
+			position = i;
+			break;
+		}
+	}
 }
 
